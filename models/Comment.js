@@ -5,10 +5,6 @@ class Comment extends Model {}
 
 Comment.init(
   {
-    title: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     body: {
         type: DataTypes.STRING,
         allowNull: false
@@ -33,6 +29,7 @@ Comment.init(
   {
     sequelize,
     underscored: true,
+    freezeTableName: true,
     modelName: 'comment',
   }
 );
