@@ -1,1 +1,24 @@
-{{!-- TODO: Create signup Handlebars --}}
+<main id="signup-view">
+  <section>
+    <header>
+      <h2>Sign Up</h2>
+    </header>
+    <form class="signup-form">
+      <div class="form-div">
+        <label for="name">Username</label>
+        <input type="text" name="name" id="signup-name" placeholder=" username" />
+      </div>
+      <div class="form-div">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="signup-email" placeholder=" email" />
+      </div>
+      <div class="form-div">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="signup-password" placeholder="password" />
+      </div>
+      <div class="form-div"><button type="submit" id="submit">Sign Up</button></div>
+    </form>
+    <a href="/signup">Log in instead.</a>
+  </section>
+  <script src="/js/login.js"></script>
+</main>

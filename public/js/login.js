@@ -41,6 +41,8 @@ const signupHandler = async () => {
   }
 }
 
-document.querySelector('.login-form').addEventListener('submit', loginHandler)
-
-document.querySelector('.signup-form').addEventListener('submit', signupHandler)
+if (document.location.pathname === '/login'){
+  document.querySelector('.login-form').addEventListener('submit', loginHandler)
+} else if (document.location.pathname === '/signup'){
+  document.querySelector('.signup-form').addEventListener('submit', signupHandler)
+}
