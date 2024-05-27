@@ -1,20 +1,22 @@
-<main id="login-view">
-  <section>
-    <header>
+<main class="row justify-content-center align-items-center" id="login-view">
+  <section class="card col-xs-11 col-md-9 col-lg-6 p-0 my-5 border-dark">
+    <header class="card-header bg-dark text-white">
       <h2>Log In</h2>
     </header>
-    <form class="login-form">
-      <div class="form-div">
+    <form id="login-form" class="login-form card-body p-0">
+      <div class="form-group m-3">
         <label for="email">Email</label>
-        <input type="text" name="email" id="login-email" placeholder=" email" />
+        <input type="text" class="form-control" name="email" id="login-email" placeholder=" email" />
       </div>
-      <div class="form-div">
+      <div class="form-group m-3">
         <label for="password">Password</label>
-        <input type="password" name="password" id="login-password" placeholder="password" />
+        <input type="password" class="form-control" name="password" id="login-password" placeholder="password" />
       </div>
-      <div class="form-div"><button type="submit" id="submit">Log In</button></div>
     </form>
-    <a href="/signup">Sign up instead.</a>
+    <div class="row my-3 justify-content-around">
+      <button class="col-10 col-lg-4 btn btn-dark" form="login-form" type="submit" id="submit">Log In</button>
+      <a href="/signup" class="col-10 col-lg-4 btn btn-dark">Create New Account</a>
+    </div>
   </section>
   <script src="/js/login.js"></script>
 </main>

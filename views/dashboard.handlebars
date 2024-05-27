@@ -1,1 +1,7 @@
-{{!-- TODO: Create dashboard Handlebars - My posts and create new post { posts } --}}
+<main class="row justify-content-center align-items-center" id="login-view">
+  <section class="row justify-content-center" id="post-list">
+    {{#each posts as |post|}}
+      {{> post}}
+    {{/each}}
+  </section>
+</main>

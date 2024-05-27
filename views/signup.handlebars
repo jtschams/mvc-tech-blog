@@ -1,24 +1,26 @@
-<main id="signup-view">
-  <section>
-    <header>
+<main class="row justify-content-center align-items-center" id="signup-view">
+  <section class="card col-xs-11 col-md-9 col-lg-6 p-0 my-5 border-dark">
+    <header class="card-header bg-dark text-white">
       <h2>Sign Up</h2>
     </header>
-    <form class="signup-form">
-      <div class="form-div">
+    <form id="signup-form" class="signup-form card-body p-0">
+      <div class="form-group m-3">
         <label for="name">Username</label>
-        <input type="text" name="name" id="signup-name" placeholder=" username" />
+        <input type="text" class="form-control" name="name" id="signup-name" placeholder=" username" />
       </div>
-      <div class="form-div">
+      <div class="form-group m-3">
         <label for="email">Email</label>
-        <input type="text" name="email" id="signup-email" placeholder=" email" />
+        <input type="text" class="form-control" name="email" id="signup-email" placeholder=" email" />
       </div>
-      <div class="form-div">
+      <div class="form-group m-3">
         <label for="password">Password</label>
-        <input type="password" name="password" id="signup-password" placeholder="password" />
+        <input type="password" class="form-control" name="password" id="signup-password" placeholder="password" />
       </div>
-      <div class="form-div"><button type="submit" id="submit">Sign Up</button></div>
     </form>
-    <a href="/signup">Log in instead.</a>
+    <div class="row my-3 justify-content-around">
+      <button class="col-10 col-lg-4 btn btn-dark" form="signup-form" type="submit" id="submit">Sign Up</button>
+      <a href="/login" class="col-10 col-lg-4 btn btn-dark">Use Existing Account</a>
+    </div>
   </section>
   <script src="/js/login.js"></script>
 </main>
