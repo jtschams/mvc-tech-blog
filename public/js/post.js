@@ -12,7 +12,8 @@ const postCreate = async () => {
     });
 
     if (response.ok) {
-      console.log(response);
+      const newPost = await response.json()
+      document.location.replace(`/post/${newPost.id}`)
     } else {
       alert('Unable to create post.')
     }
@@ -46,32 +47,36 @@ const postDelete = async () => {
   const postId = postPath[postPath.length - 1];
   
   if (confirm('Are you sure you want to delete this post?')) {
-    if (body) {
-      const response = await fetch(`/api/posts/${postId}`, {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' }
-      })
-      
-      if (response.ok) {
-        document.location.replace('/dashboard');
-      }
+    const response = await fetch(`/api/posts/${postId}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    
+    if (response.ok) {
+      document.location.replace('/dashboard');
     }
   }
 };
 
-const editPost = () => {
-  const postContents = document.querySelector('.post-body').textContent;
+const editPost = async () => {
+  const postContents = document.querySelector('.post-body').textContent.trim();
   document.querySelector('.post-body').innerHTML = `
-  <form class='post-edit'>
-    <textarea name='body' id='post-body'>${postContents}</textarea>
-    <button type='submit'>
+  <form class='post-edit text-center'>
+    <div class="form-group">
+      <textarea class="col-12" name='body' id='post-body'>${postContents}</textarea>
+    </div
+    <div class="form-group">
+      <button class="col-10 col-lg-4 btn btn-dark" type='submit'>Save Changes</button>
+    </div>
   </form>
   `
   document.querySelector('.post-edit').addEventListener('submit', postUpdate)
 }
 
-document.querySelector('#edit-post').addEventListener('click', editPost);
-
-document.querySelector('.post-form').addEventListener('submit', postCreate);
-
-document.querySelector('#post-delete').addEventListener('click', postDelete)
+if (document.location.pathname === '/create') {
+  document.querySelector('.post-form').addEventListener('submit', postCreate);
+} else {
+  document.querySelector('#post-edit').addEventListener('click', editPost);
+  
+  document.querySelector('#post-delete').addEventListener('click', postDelete)
+}

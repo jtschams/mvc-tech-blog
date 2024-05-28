@@ -5,15 +5,16 @@
         <h3 class="m-0 col-sm-6 col-md-7 col-xl-9">{{post.title}}</h3>
           {{#if postOwner}}
             <div class="btn-group col-sm-6 col-md-5 col-xl-3" role="group">
-              <button type="button" class="btn btn-outline-light">Edit Post</button>
-              <button type="button" class="btn btn-outline-danger">Delete Post</button>
+              <button type="button" class="btn btn-outline-light" id="post-edit">Edit Post</button>
+              <button type="button" class="btn btn-outline-danger" id="post-delete">Delete Post</button>
             </div>
           {{/if}}
         <p class="text-end m-0">posted by <b>{{post.user.name}}</b> at {{post.createdAt}}</p>
       </header>
-      <div class="card-body">
+      <div class="card-body post-body">
         <p class="card-text">{{post.body}}</p>
       </div>
     </article>
   </section>
 </main>
+<script src="/js/post.js"></script>
