@@ -24,7 +24,7 @@ router.get('/create', checkAuth, async (req, res) => {
 router.get('/post/:id', checkAuth, async (req, res) => {
     const postData = await Post.findByPk(req.params.id, { include: User });
     const commentData = await Comment.findAll({
-        where: { post_id: req.params.id }
+        where: { post_id: req.params.id }, include: User
     });
     const comments = commentData.map(comment => comment.get({ plain:true }));
     const post= postData.get({plain:true})

@@ -1,4 +1,4 @@
-<main class="row justify-content-center align-items-center" id="login-view">
+<main class="row justify-content-center align-items-center" id="single-view">
   <section class="row justify-content-center" id="post-list">
     <article class="card col-xs-12 col-md-10 my-4 border-dark">
       <header class="row justify-space-between card-header bg-dark text-white">
@@ -15,6 +15,23 @@
         <p class="card-text">{{post.body}}</p>
       </div>
     </article>
+    <article class="card col-xs-12 col-md-9 my-0 px-0 border-dark">
+      <div class="row justify-content-center card-body col-12" id="comment-area"><button class="col-12 col-lg-10 btn btn-dark" id="add-comment">Add Comment</button></div>
+      <ul class="list-group list-group-flush">
+      {{#each comments as |comment|}}
+        <li class="list-group-item border-dark m-0 px-4">
+          <div class="row">
+            <p class="card-text col-10">{{comment.body}}</p>
+            <p class="card-text col-2 text-muted align-self-end text-end">--{{comment.user.name}}</p>
+          </div>
+        </li>
+        {{> comment}}
+      {{/each}}
+      </ul>
+    </article>
+    <div class="col-md-1"></div>
   </section>
+  <div
 </main>
 <script src="/js/post.js"></script>
+<script src="/js/comment.js"></script>
