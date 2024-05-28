@@ -4,14 +4,22 @@ const { Post, Comment, User } = require('../../models')
 
 router.get('/', async (req, res) => {
     const postData = await Post.findAll({ include: User });
-    const posts = postData.map(post => post.get({ plain:true }));
-
+    const posts = postData.map(post => {
+        newPost = post.get({ plain:true })
+        newPost.date = `${newPost.createdAt.getMonth() + 1}/${newPost.createdAt.getDate()}/${newPost.createdAt.getFullYear()}`
+        return newPost;
+    });
+    
     return res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
 });
 
 router.get('/dashboard', checkAuth, async (req, res) => {
     const postData = await Post.findAll({ where: { user_id: req.session.user_id }, include: User });
-    const posts = postData.map(post => post.get({ plain:true }));
+    const posts = postData.map(post => {
+        newPost = post.get({ plain:true })
+        newPost.date = `${newPost.createdAt.getMonth() + 1}/${newPost.createdAt.getDate()}/${newPost.createdAt.getFullYear()}`
+        return newPost;
+    });
 
     return res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
 });
@@ -29,7 +37,8 @@ router.get('/post/:id', checkAuth, async (req, res) => {
     const comments = commentData.map(comment => comment.get({ plain:true }));
     const post= postData.get({plain:true})
     const postOwner = post.user.id === req.session.user_id
-    
+
+    post.date = `${post.createdAt.getMonth() + 1}/${post.createdAt.getDate()}/${post.createdAt.getFullYear()}`
     return res.render('single', { post, comments, postOwner, loggedIn: req.session.loggedIn });
 });
 
