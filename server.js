@@ -13,7 +13,9 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
   secret: process.env.SESS_SECRET || 'extra secret in case render refuses to use the environment variable I put in',
-  cookie: {},
+  cookie: {
+    maxAge: 2 * 60 * 60 * 1000
+  },
   store: new SequelizeStore({
     db: sequelize,
   }),
